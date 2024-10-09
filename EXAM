@@ -1,0 +1,87 @@
+#1
+void main (){
+  List <int> numbers =[1,2,3,4,5];
+  List<int> reversedNumbers = numbers.reversed.toList();
+  print (reversedNumbers);
+}
+#2
+List<int> findSecondLowestAndSecondGreatest(List<int> numbers) {
+  var sortedNumbers = numbers.toSet().toList()..sort();
+
+  return [sortedNumbers[1], sortedNumbers[sortedNumbers.length - 2]];
+}
+
+void main() {
+  List<int> numbers = [7, 2, 10, 41, 35];
+  List<int> result = findSecondLowestAndSecondGreatest(numbers);
+  print("Second lowest: ${result[0]}, Second greatest: ${result[1]}");
+}
+
+
+
+#3 
+-abstarct function is a function that only used for the extend 
+-constructors is functions that doesn't return anything
+
+#4
+class Book {
+  String? title;
+  String? author;
+  int? year;
+
+  Book(this.title, this.author, this.year);
+
+  String getDetails() {
+    return "$title by $author, published in $year";
+  }
+}
+
+class Library {
+  static int totalBooks = 0;
+  List<Book> myBooks = [];
+
+  void addBook(Book book) {
+    myBooks.add(book);
+    totalBooks++;
+  }
+
+  void showAllBooks() {
+    for (var book in myBooks) {
+      print(book.getDetails());
+    }
+  }
+
+  static void getTotalBooks() {
+    print('Total books in library: $totalBooks');
+  }
+
+  Future<void> fetchBooksFromServer() async {
+    await Future.delayed(Duration(seconds: 2));
+    addBook(Book("Learning Dart", "Author X", 2022));
+    addBook(Book("Advanced Flutter", "Author Y", 2023));
+  }
+}
+
+void main() async {
+  Library library = Library();
+  Book book1 = Book("Flutter", "Author X", 2013);
+  library.addBook(book1);
+
+  await library.fetchBooksFromServer();
+  library.showAllBooks();
+  Library.getTotalBooks();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
